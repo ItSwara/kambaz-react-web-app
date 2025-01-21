@@ -1,22 +1,22 @@
 export default function AssignmentEditor() {
     return (
-      <div id="wd-assignments-editor">
-        <label htmlFor="wd-name">Assignment Name</label>
-        <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
-        <textarea id="wd-description">
-          The assignment is available online Submit a link to the landing page of
-        </textarea>
-        <br />
-        <table>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-points">Points</label>
-          </td>
-          <td>
-            <input id="wd-points" value={100} />
-          </td>
-        </tr>
-        <tr>
+        <div id="wd-assignments-editor">
+            <label htmlFor="wd-name"><b>Assignment Name</b></label> <br /> <br />
+            <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
+            <textarea id="wd-description" rows={10} cols={44}>
+                The assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application Links to all relevant source code repositories The Kanbas application should include a link to navigate back to the landing page.
+            </textarea>
+            <br />
+            <table>
+                <tr>
+                    <td align="right" valign="top">
+                        <label htmlFor="wd-points">Points</label>
+                    </td>
+                    <td>
+                        <input id="wd-points" value={100} />
+                    </td>
+                </tr>
+                <tr>
                     <td align="right" valign="top">
                         <label htmlFor="wd-group">Assigment Group</label>
                     </td>
@@ -94,9 +94,9 @@ export default function AssignmentEditor() {
                 <tr>
                     <td></td>
                     <td></td>
-                    <button>Cancel</button>  <button>Save</button>
+                    <button>Cancel</button> &nbsp; <button>Save</button>
                 </tr>
-      </table>
-    </div>
-);}
-  
+            </table>            
+        </div>
+    );
+}

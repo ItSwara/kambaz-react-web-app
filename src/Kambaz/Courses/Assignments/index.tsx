@@ -22,7 +22,7 @@ export default function Assignments() {
             </li>
             <li className="wd-assignment-list-item">
                     <a className="wd-assignment-link"
-                        href="#/Kanbas/Courses/1234/Assignments/234">
+                        href="#/Kambaz/Courses/1234/Assignments/234">
                         A2 - CSS + BOOTSTRAP
                     </a>
                     <br />
@@ -32,7 +32,7 @@ export default function Assignments() {
                 </li>
                 <li className="wd-assignment-list-item">
                     <a className="wd-assignment-link"
-                        href="#/Kanbas/Courses/1234/Assignments/345">
+                        href="#/Kambaz/Courses/1234/Assignments/345">
                         A3 - JAVASCRIPT + REACT
                     </a>
                     <br />

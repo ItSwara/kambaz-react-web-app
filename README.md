@@ -1,3 +1,5 @@
+## Swarali Degaonkar
+
 # Getting Started with Create React App
 React + Vite Project
 This is a simple React project bootstrapped with Vite.

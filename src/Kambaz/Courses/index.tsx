@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route , Navigate } from "react-router";
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -20,7 +20,7 @@ export default function Courses() {
           <td valign="top">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="Home" element={<h2>Home</h2>} />
+              <Route path="Home" element={<Home/>} />
               <Route path="Modules" element={<Modules />} />
               <Route path="Assignments" element={<Assignments/>} />
               <Route path="Assignments/:aid" element={<AssignmentEditor />} />
