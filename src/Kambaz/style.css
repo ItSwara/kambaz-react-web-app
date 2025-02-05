@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  @media (min-width: 768px) {
+    #wd-kambaz .wd-main-content-offset {
+      padding-left: 100px !important;
+    }
+  }
+
+  .list-group.wd > .list-group-item.active { 
+    color: black; 
+    background-color: white; 
+    border-left: 3px solid black !important; 
+  } 
+
+  .btn-secondary { 
+    --bs-btn-color: #000 !important; 
+    --bs-btn-bg: #c7cdd1 !important; 
+    --bs-btn-border-color: #c7cdd1 !important; 
+    --bs-btn-hover-color: #fff !important; 
+  } 
+  .bg-secondary { 
+    --bs-secondary-rgb: 199, 205, 209; 
+  } 
+  .list-group-item { 
+    --bs-list-group-border-color: gray; 
+  } 
+  .wd-lesson { 
+    border-left: 3px solid green !important; 
+  } 
+
+
+  #wd-modules-controls {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 2px !important;
+    padding-right: 0 !important;
+    background-color: white !important;
+    padding: 8px !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
+
+/* Assigments css */
+.assignments-header {
+  background-color: #C7CDD1 !important;
+}
+
+/* .wd-assignments {
+  background-color: white;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c7cdd1;
+  z-index: 2;
+}
+
+.form-control {
+  background-color: #f8f9fa;
+}
+
+.assignment-item {
+  border-left: 4px solid #28a745;
+  padding: 10px;
+}
+
+.assignment-title {
+  font-weight: 500;
+  color: #2d3b45;
+}
+
+.assignment-details {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.btn {
+  color: #2d3b45;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.btn:hover {
+  background-color: #e9ecef;
+} */

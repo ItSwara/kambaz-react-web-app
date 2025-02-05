@@ -2,19 +2,18 @@ import { Routes, Route, Navigate } from "react-router";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";
-
+import "./style.css"
 import KambazNavigation from "./Navigation";
 
 
 export default function Kambaz() {
     return (
-      <div id="wd-kambaz" style={{ textAlign: "left" }}>
-        <table>
-        <tr>
-          <td valign="top">
+      <div id="wd-kambaz" >
+        
             <KambazNavigation />
-          </td>
-          <td valign="top">
+       
+            <div className="wd-main-content-offset p-3">
+
             <Routes>
               <Route path="/" element={<Navigate to="/Kambaz/Account" />} />
               <Route path="/Account/*" element={<Account />} />
@@ -24,11 +23,10 @@ export default function Kambaz() {
               <Route path="/Inbox" element={<h1>Inbox</h1>} />
 
             </Routes>
-          </td>
-        </tr>
-      </table>
-
+            </div>
       </div>
   );}
-  
+
+
+
   

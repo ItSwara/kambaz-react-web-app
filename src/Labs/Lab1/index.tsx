@@ -1,6 +1,18 @@
 export default function Lab1() {
     return (
+      
       <div id="wd-lab1" style={{ textAlign: "left" }}>
+        <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
+        Name: <b>Swarali Degaonkar</b> <br />
+        Section: <b>01</b> <br />
+        CRN: <b>35649</b> <br />
+        GitHub Repo : <a href="https://github.com/ItSwara/kambaz-react-web-app.git" id="wd-github"> Link</a>
+        <br /> </div>
+
+
+
+
+        {/* Lab 1 starts here  */}
         <h2>Lab 1</h2>
         <h3>HTML Examples</h3>
 
