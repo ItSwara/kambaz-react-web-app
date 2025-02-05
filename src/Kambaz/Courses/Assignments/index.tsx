@@ -1,7 +1,7 @@
 
-import { FaCheckCircle, FaCircle, FaSearch } from "react-icons/fa";
-import { BsGripVertical, BsFileText, BsThreeDotsVertical } from "react-icons/bs";
-import { FaEllipsisV, FaCaretDown, FaPlus } from "react-icons/fa";
+import {  FaSearch } from "react-icons/fa";
+import {  BsFileText, BsThreeDotsVertical } from "react-icons/bs";
+import {  FaPlus } from "react-icons/fa";
 import GreenCheckmark from "./GreenCheckmark";
 
 export default function Assignments() {
