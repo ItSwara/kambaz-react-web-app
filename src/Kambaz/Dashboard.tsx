@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button } from "react-bootstrap";
-import reactImage from '/images/reactjs.jpg';
-import nodeImage from '/images/nodejs.png';
-import typescriptImage from '/images/typescript.png';
-import pythonImage from '/images/python.jpeg';
-import awsImage from '/images/aws.png';
-import dockerImage from '/images/docker.png';
-import sqlImage from '/images/sql.png';
+
 
 import * as db from "./Database";
 
