@@ -5,6 +5,6 @@ import users from "./users.json"
 import enrollments from "./enrollments.json"
 export {  courses ,modules , assignments , users , enrollments};
 
-export function find(arg0: (a: any) => boolean) {
+export function find() {
   throw new Error("Function not implemented.");
 }

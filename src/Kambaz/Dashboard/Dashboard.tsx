@@ -28,7 +28,7 @@ export default function Dashboard({
   courses,
   newCourse,
   editMode,
-  setCourses,
+  //setCourses,
   setNewCourse,
   setEditMode,
   addNewCourse,
@@ -37,7 +37,7 @@ export default function Dashboard({
 }: DashboardProps) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const userRole = currentUser.role;
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [showAllCourses, setShowAllCourses] = useState(false);
   const [enrollments, setEnrollments] = useState<Array<{ user: string; course: string }>>(() => {
     return JSON.parse(localStorage.getItem("enrollments") || "[]");

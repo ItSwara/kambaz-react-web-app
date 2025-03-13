@@ -1,6 +1,6 @@
 import * as db from "../../Database";
 import { useParams } from "react-router";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAssignment } from "./reducer";
 import { useState, useEffect } from "react";
@@ -94,7 +94,7 @@ export default function AssignmentEditor() {
             {aid ? (
                 db.assignments
                     .filter((a) => a._id === aid)
-                    .map((assignment) => (
+                    .map((_assignment) => (
                         <form action="#" className="assignment-editor" style={{ maxWidth: "600px", margin: "0 auto" }}>
                             <label htmlFor="wd-name" className="mb-2">
                                 <b>Assignment Name</b>
