@@ -131,7 +131,7 @@ export default function Dashboard({
                   }}
                 >
                   <img
-                    src={course.image || `public/images/${course._id}.png`}
+                    src={course.image || `/images/${course._id}.png`}
                     alt="Course"
                     style={{ width: "100%", height: "160px" }}
                   />
