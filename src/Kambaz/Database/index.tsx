@@ -4,3 +4,7 @@ import assignments from "./assignment.json";
 import users from "./users.json"
 import enrollments from "./enrollments.json"
 export {  courses ,modules , assignments , users , enrollments};
+
+export function find(arg0: (a: any) => boolean) {
+  throw new Error("Function not implemented.");
+}

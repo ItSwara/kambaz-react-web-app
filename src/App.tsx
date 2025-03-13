@@ -3,7 +3,8 @@ import './App.css'
 import Labs from "./Labs";
 import { HashRouter ,Route, Routes , Navigate } from "react-router-dom";
 import Kambaz from "./Kambaz";
-
+import store from "./Kambaz/store";
+import { Provider } from "react-redux";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <HashRouter>
+       <Provider store={store}>
        {/* Common Information
        <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
         Name: <b>Swarali Degaonkar</b> <br />
@@ -29,6 +31,7 @@ function App() {
           
         </Routes>
     </div>
+    </Provider>
     </HashRouter>
   )
 }
