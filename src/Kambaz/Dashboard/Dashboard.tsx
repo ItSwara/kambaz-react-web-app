@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 // Define the type for a course
@@ -39,7 +39,7 @@ export default function Dashboard({
   deleteCourse,
   updateCourse,
 }: DashboardProps) {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   
   // Initialize with local state instead of relying on Redux immediately
