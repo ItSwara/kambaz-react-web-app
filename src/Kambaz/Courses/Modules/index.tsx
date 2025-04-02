@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
 import ModulesControls from "./ModulesControls";
@@ -6,7 +6,9 @@ import { BsGripVertical } from "react-icons/bs";
 import { useParams } from "react-router";
 import { FormControl } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { addModule, deleteModule, updateModule, editModule } from "./reducer";
+import { setModules,addModule, deleteModule, updateModule, editModule } from "./reducer";
+import * as coursesClient from "../client";
+import * as modulesClient from "./client";
 
 
 export default function Modules() {
@@ -14,25 +16,57 @@ export default function Modules() {
     const [moduleName, setModuleName] = useState("");
     const { modules } = useSelector((state: any) => state.modulesReducer);
     const dispatch = useDispatch();
+
+    // const saveModule = async (module: any) => {
+    //   await modulesClient.updateModule(module);
+    //   dispatch(updateModule(module));
+    // };
+
+    const saveModule = async (module: any) => {
+      try {
+        // Update module on the server
+        const updatedModule = await modulesClient.updateModule(module);
+    
+        // Dispatch the updated module to the store only if it is successfully updated
+        if (updatedModule) {
+          dispatch(updateModule(updatedModule));
+        }
+      } catch (error) {
+        console.error("Error saving module:", error);
+      }
+    };
+  
+    const removeModule = async (moduleId: string) => {
+      await modulesClient.deleteModule(moduleId);
+      dispatch(deleteModule(moduleId));
+    };
+  
+    const createModuleForCourse = async () => {
+      if (!cid) return;
+      const newModule = { name: moduleName, course: cid };
+      const module = await coursesClient.createModuleForCourse(cid, newModule);
+      dispatch(addModule(module));
+    };
+  
+    const fetchModules = async () => {
+      const modules = await coursesClient.findModulesForCourse(cid as string);
+      dispatch(setModules(modules));
+    };
+    useEffect(() => {
+      fetchModules();
+    }, []);
+  
   
     return (
       <div className="container p-0">
         <ModulesControls
           moduleName={moduleName}
           setModuleName={setModuleName}
-          addModule={() => {
-            dispatch(
-              addModule({
-                name: moduleName,
-                course: cid,
-              })
-            );
-            setModuleName("");
-          }}
+          addModule={createModuleForCourse}
         />
         <ul id="wd-modules" className="list-group rounded-0 text-start mb-2">
           {modules
-            .filter((module: any) => module.course === cid)
+            //.filter((module: any) => module.course === cid)
             .map((module: any) => (
               <li
                 key={module._id}
@@ -59,9 +93,7 @@ export default function Modules() {
                       }
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          dispatch(
-                            updateModule({ ...module, editing: false })
-                          );
+                          saveModule({ ...module, editing: false });
                         }
                       }}
                       defaultValue={module.name}
@@ -69,7 +101,7 @@ export default function Modules() {
                   )}
                   <ModuleControlButtons
                     moduleId={module._id}
-                    deleteModule={(moduleId) => dispatch(deleteModule(moduleId))}
+                    deleteModule={(moduleId) => removeModule(moduleId)}
                     editModule={(moduleId) => dispatch(editModule(moduleId))}
                   />
                 </div>

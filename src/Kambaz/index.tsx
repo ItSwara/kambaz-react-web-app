@@ -4,12 +4,28 @@ import Dashboard from "./Dashboard/Dashboard";
 import Courses from "./Courses";
 import "./style.css";
 import KambazNavigation from "./Navigation";
-import * as db from "./Database";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
+import Session from "./Account/Session";
+import * as courseClient from "./Courses/client";
+import * as userClient from "./Account/client";
+import { useSelector } from "react-redux";
 
 export default function Kambaz() {
-  const [courses, setCourses] = useState<any[]>(db.courses);
+  const [courses, setCourses] = useState<any[]>([]);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const fetchCourses = async () => {
+    try {
+      const courses = await userClient.findMyCourses();
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, [currentUser]);
+
   const [newCourse, setNewCourse] = useState<any>({
     _id: "1234",
     name: "New Course",
@@ -23,13 +39,15 @@ export default function Kambaz() {
   const [editMode, setEditMode] = useState<boolean>(false);
 
   // Event handler functions moved from Dashboard
-  const deleteCourse = (courseId: string) => {
+  const deleteCourse = async(courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
     setCourses(
       courses.filter((course: { _id: string }) => course._id !== courseId)
     );
   };
 
-  const updateCourse = () => {
+  const updateCourse = async() => {
+    await courseClient.updateCourse(newCourse);
     setCourses(
       courses.map((c: { _id: any }) =>
         c._id === newCourse._id ? newCourse : c
@@ -48,20 +66,26 @@ export default function Kambaz() {
     setEditMode(false);
   };
 
-  const addNewCourse = () => {
-    const newCourseWithId = { ...newCourse, _id: Date.now().toString() };
-    setCourses([...courses, newCourseWithId]);
-    setNewCourse({
-      _id: "0",
-      name: "",
-      number: "",
-      startDate: "",
-      endDate: "",
-      image: "/images/reactjs.jpg",
-      description: "",
-    });
+  const addNewCourse = async () => {
+    try {
+      const newCourseCreated = await userClient.createCourse(newCourse);
+      setCourses((prevCourses) => [...prevCourses, newCourseCreated]);
+      setNewCourse({
+        _id: "0",
+        name: "",
+        number: "",
+        startDate: "",
+        endDate: "",
+        image: "/images/reactjs.jpg",
+        description: "",
+      });
+    } catch (error) {
+      console.error("Error creating course:", error);
+    }
   };
+  
   return (
+    <Session>
     <div id="wd-kambaz">
       <KambazNavigation />
 
@@ -78,7 +102,7 @@ export default function Kambaz() {
                 courses={courses}
                 newCourse={newCourse}
                 editMode={editMode}
-                setCourses={setCourses}
+                //setCourses={setCourses}
                 setNewCourse={setNewCourse}
                 setEditMode={setEditMode}
                 addNewCourse={addNewCourse}
@@ -102,5 +126,6 @@ export default function Kambaz() {
         </Routes>
       </div>
     </div>
+    </Session>
   );
 }
