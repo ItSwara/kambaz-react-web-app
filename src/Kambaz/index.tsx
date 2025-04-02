@@ -10,6 +10,7 @@ import Session from "./Account/Session";
 import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
 import { useSelector } from "react-redux";
+import { Course } from "./Courses/reducer";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -40,7 +41,7 @@ export default function Kambaz() {
 
   // Event handler functions moved from Dashboard
   const deleteCourse = async(courseId: string) => {
-    const status = await courseClient.deleteCourse(courseId);
+    //const status = await courseClient.deleteCourse(courseId);
     setCourses(
       courses.filter((course: { _id: string }) => course._id !== courseId)
     );
@@ -99,16 +100,17 @@ export default function Kambaz() {
             element={
               <ProtectedRoute>
               <Dashboard
-                courses={courses}
-                newCourse={newCourse}
-                editMode={editMode}
-                //setCourses={setCourses}
-                setNewCourse={setNewCourse}
-                setEditMode={setEditMode}
-                addNewCourse={addNewCourse}
-                deleteCourse={deleteCourse}
-                updateCourse={updateCourse}
-              />
+                  courses={courses}
+                  newCourse={newCourse}
+                  editMode={editMode}
+                  //setCourses={setCourses}
+                  setNewCourse={setNewCourse}
+                  setEditMode={setEditMode}
+                  addNewCourse={addNewCourse}
+                  deleteCourse={deleteCourse}
+                  updateCourse={updateCourse} setCourses={function (_courses: Course[]): void {
+                    throw new Error("Function not implemented.");
+                  } }              />
               </ProtectedRoute>
             }
           />
