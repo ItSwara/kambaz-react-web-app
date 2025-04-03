@@ -26,7 +26,7 @@ interface DashboardProps {
 }
 
 // Define your base API URL - adjust this to match your server
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000" || "https://kambaz-node-server-app-lba7.onrender.com" ;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL  || "https://kambaz-node-server-app-lba7.onrender.com" ;
 
 export default function Dashboard({
   courses,
