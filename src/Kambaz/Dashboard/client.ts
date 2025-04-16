@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from '../store';
-const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER;
-const COURSES_API = `${REMOTE_SERVER}/api/courses`;
+//const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER;
+//const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 const axiosWithCredentials = axios.create({ withCredentials: true });
 
 
