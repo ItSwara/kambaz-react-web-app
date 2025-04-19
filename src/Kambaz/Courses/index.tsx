@@ -9,6 +9,9 @@ import PeopleTable from "./People/Table";
 import {  useParams ,useLocation} from "react-router";
 import Quizzes from "./Quizzes";
 import QuizDetails from "./Quizzes/QuizDetails";
+import ProtectedCourseRoute from "./ProtectedCourseRoute";
+import QuizDetailsEditor from "./Quizzes/QuizDetailsEditor";
+import QuizQuestionsEditor from "./Quizzes/QuizQuestionEditor";
 
 
 
@@ -40,8 +43,14 @@ export default function Courses({ courses }: { courses: any[]; }) {
               <Route path="Assignments" element={<Assignments/>} />
               <Route path="Assignments/:aid" element={<AssignmentEditor />} />
               <Route path="People"  element={<PeopleTable />}  />
-              <Route path = "Quizzes/*" element={<Quizzes/>} />
-              <Route path="Quizzes/:qid" element={<QuizDetails />} />
+              <Route path ="Quizzes/*" element={<ProtectedCourseRoute cid={cid}> <Quizzes/> </ProtectedCourseRoute>} />
+              <Route path="Quizzes/:qid/details" element={ <ProtectedCourseRoute cid={cid}> <QuizDetails/> </ProtectedCourseRoute>} />
+
+              <Route path="Quizzes/:qid/edit" element={<ProtectedCourseRoute cid={cid}><QuizDetailsEditor/> </ProtectedCourseRoute> } />
+              <Route path="Quizzes/new" element={<QuizDetailsEditor />} />
+              <Route path="Quizzes/:qid/preview" element={<QuizDetails />} />
+              <Route path="Quizzes/:qid/questions" element={<ProtectedCourseRoute cid={cid}><QuizQuestionsEditor /></ProtectedCourseRoute>} />
+
             </Routes>
             </div>
             </div>
